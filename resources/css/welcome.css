@@ -1,0 +1,343 @@
+    /*Configuración Global*/
+    :root {
+        --carbon-black: #1C2321;
+        --seagrass: #66A182;
+        --dusty-taupe: #957964;
+        --snow: #FCF7F8;
+        --yellow-green: #C0D461;
+        --black: #000000;
+        --white: #ffffff;
+    }
+
+body {
+    margin: 0;
+    font-family: "Elms Sans", Arial, sans-serif;
+    background-color: var(--seagrass);
+    color: var(--carbon-black);
+}
+
+/*Header Y Navegación (Listo)*/
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--seagrass);
+    padding: 15px 0; /* Bajamos el padding aquí porque el container tiene su max-width */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+/*Header Y Navegación (Listo)*/
+
+
+/*Logo (Listo)*/
+.logo h1 {
+    margin: 0;
+    font-size: 30px;
+    color: var(--carbon-black);
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+    .logo a { text-decoration: none; }
+/*Fin Del Logo (listo)*/
+
+
+/* MENÚ CENTRAL */
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+/*Botones*/
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: var(--snow);
+    color: var(--carbon-black);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: 3px solid #957964;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn.primary {
+    background-color: var(--yellow-green);
+    font-weight: 700;
+}
+
+.btn:hover, .btn.primary:hover {
+    transform: scale(1.05); /* 1.10 era mucho, 1.05 es más elegante */
+    box-shadow: 0 5px 15px rgba(89, 60, 57, 0.3);
+}
+    
+
+/*Contenido de HERO*/
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 80vh; /* Altura generosa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Capa oscura para resaltar el texto */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; /* Por encima del overlay */
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--snow);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Un poco de sombra para leer mejor */
+}
+
+.hero-text {
+    font-size: 2rem;
+    color: var(--snow);
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+.hero-actions .btn.primary {
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    background-color: var(--yellow-green);
+    border: 5px solid #957964;
+    cursor: pointer;
+}
+/*hasta aquí llega el contenido de HERO*/
+
+/*INFO SECTIONS*/
+.info-section {
+    padding: 60px 20px;
+    background-color: #FCF7F8;
+    text-align: center;
+}
+
+.info-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-block {
+    margin-bottom: 30px; /* Espacio entre los dos bloques */
+}
+
+.info-block:last-child {
+    margin-bottom: 0;
+}
+
+.info-title {
+    font-size: 2rem;
+    color: var(--carbon-black); /* O un gris oscuro #333 */
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+/* Opcional: una línea decorativa bajo el título */
+.info-title::after {
+    content: '';
+    display: block;
+    width: 250px;
+    height: 3px;
+    background-color: var(--yellow-green);
+    margin: 10px auto 0;
+}
+
+.info-description {
+    font-size: 1.50rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}   
+
+/*Beneficios (Listo)*/
+.benefits-section {
+    padding: 60px 20px;
+    background-color: #957964; /*fondo general*/
+    text-align: center;
+}
+.section-main-title {
+    color: black;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+/*Grid para los 4 beneficios*/
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.benefit-card {
+    background: #FCF7F8; /* Blanco roto de tu captura */
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 5px solid #C0D461;
+    transition: transform 0.5s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+}
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.benefit-card h3 {
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    margin-bottom: 5%
+}
+.benefit-card p {
+    color: black;
+    font-size: 1.40rem;
+}
+/*Beneficios Listo*/
+
+/*Grid para Misión y Visión (Listo)*/
+
+/* Configuración base (Móviles) */
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/*Configuración para Escritorio (Pantallas mayores a 768px)*/
+@media (min-width: 768px) {
+    .mission-vision-grid {
+        grid-template-columns: 1fr 1fr; /* Se divide en dos columnas */
+    }
+}
+
+
+.mv-card {
+    background: #FCF7F8;
+    padding: 40px;
+    overflow: hidden;
+    border-radius: 15px;
+    text-align: left;
+    border: 5px solid #66A182;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+
+.mv-card h3 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+
+.mv-card p {
+    line-height: 1.5;
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+}
+
+.mv-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+
+.mv-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.mv-card:hover .mv-image-container img {
+    transform: scale(1.1);
+}
+
+.mv-content {
+    padding: 30px;
+    text-align: center; /* Centrado como en tu título principal */
+}
+
+.mv-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    /* Línea decorativa similar a los títulos informativos */
+    border-bottom: 3px solid var(--yellow-green);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+/*Grid para Misión y Visión (Listo)*/
+
+/* FOOTER (listo)*/
+footer {
+        background-color: var(--yellow-green);
+        text-align: center;
+        padding: 15px;
+        color: var(--carbon-black);
+        font-size: 1.5rem;
+}
+
+/* RESPONSIVE */
+
+
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+}

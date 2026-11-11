@@ -1,0 +1,51 @@
+:root {
+    --carbon-black: #1C2321;
+    --seagrass: #66A182;
+    --dusty-taupe: #957964;
+    --snow: #FCF7F8;
+    --yellow-green: #C0D461;
+    --white: #ffffff;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+}
+
+.auth-container { display: flex; min-height: 100vh; background-color: var(--snow); }
+
+.visual-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(102, 161, 130, 0.4), rgba(28, 35, 33, 0.8));
+}
+
+.visual-content { position: relative; z-index: 2; text-align: center; max-width: 450px; }
+.visual-content h2 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 800; }
+
+.auth-form-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px; }
+.form-box { width: 100%; max-width: 400px; }
+
+.form-header h1 { color: var(--seagrass); font-size: 2.5rem; font-weight: 800; text-align: center; margin: 0; }
+.form-header p { text-align: center; color: #666; margin-bottom: 30px; }
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--carbon-black); }
+.input-group input {
+    width: 100%; padding: 12px; border: 1.5px solid #e1e1e1; border-radius: 10px;
+    box-sizing: border-box; transition: all 0.3s ease;
+}
+.input-group input:focus { outline: none; border-color: var(--seagrass); box-shadow: 0 0 0 3px rgba(102, 161, 130, 0.1); }
+
+.btn-primary {
+    width: 100%; padding: 14px; background-color: var(--yellow-green);
+    color: var(--carbon-black); border: 3px solid var(--dusty-taupe);
+    border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s;
+}
+.btn-primary:hover { background-color: var(--seagrass); color: white; transform: translateY(-2px); }
+
+.auth-footer { text-align: center; margin-top: 25px; color: #666; }
+.auth-footer a { color: var(--seagrass); font-weight: 700; text-decoration: none; }
+.forgot-pass { font-size: 0.9rem; display: block; margin-bottom: 10px; }
+
+@media (max-width: 900px) { .auth-visual { display: none; } }

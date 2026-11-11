@@ -1,153 +1,99 @@
-<x-guest-layout>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Ecolife</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/Logo_Ecolife.jpg') }}">
+    
+    @vite(['resources/css/login.css'])
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-    :root {
-        --carbon-black: #1C2321;
-        --seagrass: #66A182;
-        --dusty-taupe: #957964;
-        --snow: #FCF7F8;
-        --yellow-green: #C0D461;
-    }
+    <style>
+        /* Estilos específicos para la imagen de fondo (Truco híbrido) */
+        .auth-visual {
+            flex: 1;
+            position: relative;
+            /* Aquí podrías usar otra imagen como 'cubosreciclaje1.jpg' para variar */
+            background: url("{{ asset('build/images/periodicoreciclado.jpg') }}") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            color: white;
+        }
 
-    body {
-        font-family: "Elms Sans", Arial, sans-serif;
-        background: linear-gradient(180deg, #6fa98c, #5f977b);
-    }
+        /* Nota: El resto de los estilos irán en login.css, 
+           pero te los dejo aquí abajo para que los copies y separes fácilmente.
+        */
+    </style>
+</head>
+<body>
 
-    .login-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
+<div class="auth-container">
+    <div class="auth-visual">
+        <div class="visual-overlay"></div>
+        <div class="visual-content">
+            <h2>Bienvenido de nuevo</h2>
+            <p>Accede a tu cuenta para seguir transformando residuos en oportunidades.</p>
+        </div>
+    </div>
 
-    .login-card {
-        background: rgba(255,255,255,0.9);
-        backdrop-filter: blur(8px);
-        padding: 40px;
-        border-radius: 16px;
-        width: 100%;
-        max-width: 420px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .login-title {
-        text-align: center;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .login-subtitle {
-        text-align: center;
-        font-size: 14px;
-        margin-bottom: 25px;
-        opacity: 0.8;
-    }
-
-    input {
-        border-radius: 8px !important;
-        border: 1px solid #ccc !important;
-        padding: 10px !important;
-    }
-
-    input:focus {
-        border-color: var(--yellow-green) !important;
-        box-shadow: 0 0 0 2px rgba(192,212,97,0.3) !important;
-    }
-
-    .primary-btn {
-        background: linear-gradient(135deg, var(--yellow-green), #a8c944);
-        border: none;
-        color: var(--carbon-black);
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 8px;
-        transition: 0.3s;
-    }
-
-    .primary-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .links {
-        font-size: 13px;
-        color: #555;
-    }
-
-</style>
-
-<div class="login-container">
-
-    <div class="login-card">
-
-        <div class="login-title">Bienvenido de nuevo</div>
-        <div class="login-subtitle">Accede a ECOLIFE ♻️</div>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email -->
-            <div>
-                <x-input-label for="email" :value="__('Correo')" />
-                <x-text-input id="email" class="block mt-1 w-full"
-                    type="email" name="email"
-                    :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <div class="auth-form-container">
+        <div class="form-box">
+            <div class="form-header">
+                <a href="/" style="text-decoration: none;"><h1>ECOLIFE</h1></a>
+                <p>Accede a tu cuenta</p>
             </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Contraseña')" />
-                <x-text-input id="password" class="block mt-1 w-full"
-                    type="password" name="password" required />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <!-- Remember -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox"
-                        class="rounded border-gray-300 text-green-600 shadow-sm"
-                        name="remember">
-                    <span class="ms-2 text-sm">Recordarme</span>
-                </label>
-            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <!-- Actions -->
-            <div class="flex items-center justify-between mt-6">
+                <div class="input-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input id="email" type="email" name="email" :value="old('email')" required autofocus placeholder="tu@ejemplo.com">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
 
-                <div class="links">
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" name="password" required placeholder="••••••••">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <div class="remember-me">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" name="remember">
+                        <span class="ms-2 text-sm">Recordarme</span>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn-primary">
+                        Iniciar Sesión
+                    </button>
+                </div>
+
+                <div class="auth-footer">
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">
+                        <a href="{{ route('password.request') }}" class="forgot-pass">
                             ¿Olvidaste tu contraseña?
                         </a>
                     @endif
+                    <div class="mt-4">
+                        ¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a>
+                    </div>
                 </div>
-
-                <button type="submit" class="primary-btn">
-                    Iniciar sesión
-                </button>
-
-            </div>
-
-            <!-- Register -->
-            <div class="text-center mt-6 links">
-                ¿No tienes cuenta?
-                <a href="{{ route('register') }}">
-                    Regístrate
-                </a>
-            </div>
-
-        </form>
-
+            </form>
+        </div>
     </div>
-
 </div>
 
-</x-guest-layout>
+</body>
+</html>
